@@ -43,20 +43,20 @@ pipx install pytest-cov
 ### Lancer tous les tests
 ```bash
 make test
-# ou
-pytest
+# ou avec PYTHONPATH
+PYTHONPATH=src pytest
 ```
 
 ### Lancer des tests spécifiques
 ```bash
 # Tests d'un module
-pytest tests/test_book.py
+PYTHONPATH=src pytest tests/test_book.py
 
 # Test spécifique
-pytest tests/test_book.py::TestBookCreation::test_create_valid_book
+PYTHONPATH=src pytest tests/test_book.py::TestBookCreation::test_create_valid_book
 
 # Tests avec plus de détails
-pytest -v
+PYTHONPATH=src pytest -v
 ```
 
 ## Couverture
@@ -65,7 +65,7 @@ pytest -v
 ```bash
 make coverage
 # ou
-pytest --cov=src/bibliotheque --cov-report=html
+pytest --cov=src --cov-report=html
 ```
 
 Le rapport HTML sera disponible dans `htmlcov/index.html`
@@ -74,7 +74,7 @@ Le rapport HTML sera disponible dans `htmlcov/index.html`
 
 ```
 bibliotheque_projet/
-├── src/bibliotheque/     # Code source
+├── src/                 # Code source
 │   ├── book.py          # Classe Book
 │   ├── user.py          # Classe User
 │   └── library.py       # Classe Library
